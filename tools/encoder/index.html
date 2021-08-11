@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Encoder - TriMill</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script type="text/javascript" src="../../universal-script.js"> </script>
-	<script src="../../libraries/jquery-3.3.1.js"></script>
-  <script src="main.js"></script>
+    <title> - TriMill</title>
 
-  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png"/>
 
-  <style>
+    <meta property="og:site_name"        content="TriMill">
+    <meta property="og:title"            content="">
+
+    <script type="text/javascript" src="/universal-script.js"> </script>
+	<link href="/stylesheet.css" type="text/css" rel="stylesheet" />
+      <style>
     * { font-size: 13pt; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}
     input[type="button"], select, input[type="number"], input[type="text"] { font-size: 13pt; }
     input[type="button"] { padding-top:1.5px; padding-bottom:1.5px; }
@@ -17,14 +22,24 @@
 
 </head>
 <body>
-  <h1>Encoder</h1>
-  <div>
+<!--HEAD_EXTRA
+  <style>
+    * { font-size: 13pt; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}
+    input[type="button"], select, input[type="number"], input[type="text"] { font-size: 13pt; }
+    input[type="button"] { padding-top:1.5px; padding-bottom:1.5px; }
+  </style>
+-->
+<h1>Encoder</h1>
+<div>
     Enter a URL: <input type="text" id="url" value="">
     <input type="button" id="encode" value="Encode">
-  </div>
-  <div>
+</div>
+<div>
     Secret URL: <input type="text" id="result" value="" readonly style="width:20ch;">
     <a href="javascript:void(0)" id="link">Link</a>
-  </div>
+</div>
+<script src="../../libraries/jquery-3.3.1.js"></script>
+<script src="main.js"></script>
+
 </body>
 </html>

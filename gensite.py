@@ -4,7 +4,7 @@ import re
 import pathlib
 import time
 
-fieldre = re.compile(r"(?sm)^<!--([A-Z_]+)\s([^-]*)-->$")
+fieldre = re.compile(r"(?sm)^<!--([A-Z_]+)\s(.*?)-->$")
 replre = re.compile(r"\{\{([A-Z_]+)\}\}")
 
 templatename = "_template_.html"

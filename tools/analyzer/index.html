@@ -5,23 +5,30 @@
 	<meta name="author" content="TriMill">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Text Analyzer - TriMill</title>
+    <title>Text Analyzer - TriMill</title>
 
-	<script type="text/javascript" src="../../universal-script.js"> </script>
-	<script src="main.js"></script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png"/>
 
-	<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+    <meta property="og:site_name"        content="TriMill">
+    <meta property="og:title"            content="Text Analyzer">
+
+    <script type="text/javascript" src="/universal-script.js"> </script>
+	<link href="/stylesheet.css" type="text/css" rel="stylesheet" />
+    <script src="main.js"></script>
 </head>
 <body>
-	<h1>Text Analyzer</h1>
-	<p>Enter text and click Analyze to get statistics and word and letter counts</p>
-	<textarea rows="6" cols="90" id="text"></textarea>
-	<p></p>
-	<button id="run" onclick="analyze()">Analyze Text</button>
-	<p></p>
-	<table id="results">
-		<tr> <th>Statistics</th> <th>Character Frequency</th> <th>Word Frequency</th> </tr>
-		<tr> <td></td> <td></td> <td></td> </tr>
-	</table>
+<!--TITLE Text Analyzer-->
+<!--HEAD_EXTRA <script src="main.js"></script>-->
+<h1>Text Analyzer</h1>
+<p>Enter text and click Analyze to get statistics and word and letter counts</p>
+<textarea rows="6" cols="90" id="text"></textarea>
+<p></p>
+<button id="run" onclick="analyze()">Analyze Text</button>
+<p></p>
+<table id="results">
+    <tr> <th>Statistics</th> <th>Character Frequency</th> <th>Word Frequency</th> </tr>
+    <tr> <td></td> <td></td> <td></td> </tr>
+</table>
+
 </body>
 </html>

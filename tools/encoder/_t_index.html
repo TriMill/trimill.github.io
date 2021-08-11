@@ -1,0 +1,18 @@
+<!--HEAD_EXTRA
+  <style>
+    * { font-size: 13pt; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}
+    input[type="button"], select, input[type="number"], input[type="text"] { font-size: 13pt; }
+    input[type="button"] { padding-top:1.5px; padding-bottom:1.5px; }
+  </style>
+-->
+<h1>Encoder</h1>
+<div>
+    Enter a URL: <input type="text" id="url" value="">
+    <input type="button" id="encode" value="Encode">
+</div>
+<div>
+    Secret URL: <input type="text" id="result" value="" readonly style="width:20ch;">
+    <a href="javascript:void(0)" id="link">Link</a>
+</div>
+<script src="../../libraries/jquery-3.3.1.js"></script>
+<script src="main.js"></script>
