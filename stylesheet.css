@@ -1,161 +1,102 @@
-@import url('https://fonts.googleapis.com/css?family=Cousine|Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
-  --bg-color: #fff;
-  --elem-bg-color: #eee;
-  --fg-color: #000;
-  
-  --button-hover: #eee;
-  --button-active: #ddd;
-  
-  --border-color: #aaa;
-  --thick-border-color: #000;
-  
-  --link-color: #00e;
-  --link-visited-color: #63b;
-  --link-active-color: #00a;
-  
-  --checkmark-after: #999;
-  
-  background: var(--bg-color)
+    --bg-color: #14171d;
+    --fg-color: #c7c6c3;
+    --accent1: #789ebf;
+    --accent2: #97bd5e;
+    --link: #a97fb3;
+    --link-hover: #82bfb3;
+    --link-active: #578c7c;
+    --button: #2c2b3b;
+    --button-hover: #4d4754;
+    --button-active: var(--link-active);
 }
-body.dark {
-  --bg-color: #191b1c;
-  --elem-bg-color: #4c5455;
-  --fg-color: #e5e8e8;
-  
-  --button-hover: #7f8c8d;
-  --button-active: #1abc9c;
-  
-  --border-color: #bbb;
-  --thick-border-color: #e5e8e8;
-  
-  --link-color: #16c8b4;
-  --link-visited-color: #1cf090;
-  --link-active-color: #1d99f3;
-  
-  --checkmark-after: #e5e8e8;
-}
-* {
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 14pt;
-  background: var(--bg-color);
-  color: var(--fg-color)
-}
-h1 {
-  font-size: 28pt;
-}
+
 body {
-  margin: 0;
-  padding: 1em;
-}
-html, body {
-  height: 100%;
-}
-select, input[type="text"], input[type="button"], input[type="number"], button, textarea {
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 13pt;
-  outline: none;
-  padding-left: 1px;
-  padding-right: 1px;
-  padding-top: 0.5px;
-  padding-bottom: 0.5px;
-  margin-top: 0.2px;
-  margin-bottom: 0.2px;
-}
-input[type="text"], input[type="number"]{
-  width: 15ch;
-}
-input[type="button"], button {
-  background-color: var(--bg-color);
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+    background: var(--bg-color);
+    color: var(--fg-color);
+    padding: 20px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0 auto;
+    max-width: 960px;
 }
 
-input[type="button"]:hover:enabled, button:hover:enabled {
-  background-color: var(--button-hover);
+body > * {
+    margin-bottom: 0px;
+    margin-top: 7px;
 }
 
-input[type="button"]:active:enabled, button:active:enabled {
-  background-color: var(--button-active);
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent1);
+    margin-top: 28px;
+    margin-bottom: 20px;
 }
 
-.container {
-  display: block;
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 6px;
-  cursor: pointer;
-  user-select: none;
+h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-top: 23px;
 }
-.container input[type=radio] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+
+a { text-decoration: none; }
+
+a:link { color: var(--link); }
+
+a:visited { color: var(--link); }
+
+a:focus { border-bottom: 1px solid; }
+
+a:hover { color: var(--link-hover); border-bottom: 1px solid; }
+
+a:active { color: var(--link-active); }
+
+a[target="_blank"] {
+    background-image: url(/external_link.svg);
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding-right: 16px;
 }
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  background-color: var(--elem-bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
+
+input, button, textarea, select {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    border: 1px solid var(--accent1);
+    border-radius: 1px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    padding: 2px 5px 2px 5px;
 }
-input:disabled ~ .checkmark {
-  background-color: var(--border-color);
+
+input[type=button], button, select {
+    background: var(--button);
 }
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+
+input[type=button]:hover, button:hover, select:hover {
+    background: var(--button-hover);
 }
-.container input:checked ~ .checkmark:after {
-  display: block;
+
+input[type=button]:active, button:active, select:active {
+    background: var(--button-active);
 }
-.container .checkmark:after {
- 	top: 3px;
-	left: 3px;
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	background: var(--checkmark-after);
+
+input:disabled, button:disabled, textarea:disabled, select:disabled {
+    background: var(--button);
+    color: var(--button-hover);
 }
-.no-border {
-  border-style: hidden;
-}
-.right {
-  text-align: right;
-  border-style: hidden;
-}
-.left {
-  text-align: left;
-  border-style: hidden;
-}
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-a:visited {
-  color: var(--link-visited-color);
-}
-a:hover {
-  color: var(--link-active-color);
-  text-decoration: underline;
-}
-a:active {
-  color: var(--link-active-color);
-  text-decoration: underline;
-}
+
 table {
   border-collapse: collapse;
   background-color: var(--bg-color);
 }
 td, th {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--button-hover);
   padding: 8px;
   vertical-align: top;
 }

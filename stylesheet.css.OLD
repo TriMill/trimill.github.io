@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine|Open+Sans');
+:root {
+  --bg-color: #fff;
+  --elem-bg-color: #eee;
+  --fg-color: #000;
+  
+  --button-hover: #eee;
+  --button-active: #ddd;
+  
+  --border-color: #aaa;
+  --thick-border-color: #000;
+  
+  --link-color: #00e;
+  --link-visited-color: #63b;
+  --link-active-color: #00a;
+  
+  --checkmark-after: #999;
+  
+  background: var(--bg-color)
+}
+body.dark {
+  --bg-color: #191b1c;
+  --elem-bg-color: #4c5455;
+  --fg-color: #e5e8e8;
+  
+  --button-hover: #7f8c8d;
+  --button-active: #1abc9c;
+  
+  --border-color: #bbb;
+  --thick-border-color: #e5e8e8;
+  
+  --link-color: #16c8b4;
+  --link-visited-color: #1cf090;
+  --link-active-color: #1d99f3;
+  
+  --checkmark-after: #e5e8e8;
+}
+* {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size: 14pt;
+  background: var(--bg-color);
+  color: var(--fg-color)
+}
+h1 {
+  font-size: 28pt;
+}
+body {
+  margin: 0;
+  padding: 1em;
+}
+html, body {
+  height: 100%;
+}
+select, input[type="text"], input[type="button"], input[type="number"], button, textarea {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 13pt;
+  outline: none;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 0.5px;
+  padding-bottom: 0.5px;
+  margin-top: 0.2px;
+  margin-bottom: 0.2px;
+}
+input[type="text"], input[type="number"]{
+  width: 15ch;
+}
+input[type="button"], button {
+  background-color: var(--bg-color);
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+input[type="button"]:hover:enabled, button:hover:enabled {
+  background-color: var(--button-hover);
+}
+
+input[type="button"]:active:enabled, button:active:enabled {
+  background-color: var(--button-active);
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.container input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: var(--elem-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+}
+input:disabled ~ .checkmark {
+  background-color: var(--border-color);
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+ 	top: 3px;
+	left: 3px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--checkmark-after);
+}
+.no-border {
+  border-style: hidden;
+}
+.right {
+  text-align: right;
+  border-style: hidden;
+}
+.left {
+  text-align: left;
+  border-style: hidden;
+}
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--link-visited-color);
+}
+a:hover {
+  color: var(--link-active-color);
+  text-decoration: underline;
+}
+a:active {
+  color: var(--link-active-color);
+  text-decoration: underline;
+}
+table {
+  border-collapse: collapse;
+  background-color: var(--bg-color);
+}
+td, th {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  vertical-align: top;
+}
+th {
+  padding: 10px;
+  text-align: center;
+  background-color: var(--bg-color);
+}
