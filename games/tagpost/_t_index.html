@@ -1,0 +1,107 @@
+<!--TITLE Tagpost-->
+<!--HEAD_EXTRA
+<style>
+    div {
+        padding-top: 8px;
+    }
+</style>
+-->
+<h1>Tagpost</h1>
+<span><input type="text" id="searchbar" /> <input type="button" id="searchbutton" value="Go" onclick="go();" /></span>
+<p id="errortext" style="color: #cc5c5c;" hidden>Error:</p>
+<p id="introtext">Enter any lowercase four-letter word (or not word) above and click "Go".</p>
+<div id="ui" hidden>
+    <span>&gt; <span id="tagname"></span></span>
+    <div>
+        <textarea id="content" rows=5 cols=30></textarea>
+        <span><span id="charcount">0</span>/128</span>
+    </div>
+    <div>
+        <input type="button" id="submit" value="Save" onclick="save();" />
+    </div>
+    <div>
+        <span id="edittime"></span>
+    </div>
+</div>
+<script>
+    const e_content = document.getElementById("content");
+    const e_searchbar = document.getElementById("searchbar");
+    const e_tagname = document.getElementById("tagname");
+    const e_edittime = document.getElementById("edittime");
+    const e_introtext = document.getElementById("introtext");
+    const e_errortext = document.getElementById("errortext");
+    const e_charcount = document.getElementById("charcount");
+    e_content.addEventListener("input", contentInput);
+
+    async function contentInput() {
+        e_charcount.textContent = e_content.value.length;
+    }
+
+    async function go() {
+        const tag = document.getElementById("searchbar").value;
+        try {
+            const data = await loadtag(tag);
+            window.tag = tag;
+            document.getElementById("tagname").textContent = tag;
+            if(data.found) {
+                document.getElementById("content").value = data.post.contents;
+                date = new Date(data.post.time)
+                document.getElementById("edittime").textContent = "Last modified " + (date.toLocaleString());
+            } else {
+                document.getElementById("content").value = "";
+                document.getElementById("edittime").textContent = "Never modified before";
+            }
+            document.getElementById("introtext").hidden = true;
+            document.getElementById("errortext").hidden = true;
+            document.getElementById("ui").hidden = false;
+
+        } catch(e) {
+            document.getElementById("errortext").textContent = "Error: " + e.toString();
+            document.getElementById("errortext").hidden = false;
+            document.getElementById("ui").hidden = true;
+        }
+        contentInput();
+    }
+
+    async function save() {
+        const data = document.getElementById("content").value;
+        let res;
+        try {
+            res = await savetag(window.tag, data);
+        } catch(e) {
+            document.getElementById("errortext").textContent = "Error: " + e.toString();
+            document.getElementById("errortext").hidden = false;
+            return;
+        }
+        if(res.ok) {
+            document.getElementById("errortext").hidden = true;
+            // TODO visual success
+        } else {
+            const text = await res.text();
+            document.getElementById("errortext").textContent = "Error: " + text;
+            document.getElementById("errortext").hidden = false;
+        }
+    }
+    
+    async function loadtag(tag) {
+        if(typeof(tag) !== "string" || tag.match(/^[a-z]{4}$/) === null) {
+            throw "Invalid tag";
+        }
+        const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
+        //const url = "https://localhost:12321/tagpost?tag=" + tag;
+        const res = await fetch(url);
+        return await res.json();
+    }
+    async function savetag(tag, data) {
+        if(typeof(tag) !== "string" || typeof(data) !== "string" || tag.match(/^[a-z]{4}$/) === null || data.length > 128) {
+            throw "Invalid tag or data";
+        }
+        const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
+        //const url = "https://localhost:12321/tagpost?tag=" + tag;
+        return await fetch(url, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({post: data})
+        });
+    }
+</script>
