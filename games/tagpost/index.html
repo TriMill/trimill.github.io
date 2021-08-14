@@ -110,8 +110,8 @@
         if(typeof(tag) !== "string" || tag.match(/^[a-z]{4}$/) === null) {
             throw "Invalid tag";
         }
-        //const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
-        const url = "https://localhost:12321/tagpost?tag=" + tag;
+        const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
+        //const url = "https://localhost:12321/tagpost?tag=" + tag;
         const res = await fetch(url);
         return await res.json();
     }
@@ -119,8 +119,8 @@
         if(typeof(tag) !== "string" || typeof(data) !== "string" || tag.match(/^[a-z]{4}$/) === null || data.length > 128) {
             throw "Invalid tag or data";
         }
-        //const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
-        const url = "https://localhost:12321/tagpost?tag=" + tag;
+        const url = "https://23.239.13.217:12321/tagpost?tag=" + tag;
+        //const url = "https://localhost:12321/tagpost?tag=" + tag;
         return await fetch(url, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
